@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ERG Emission Clock</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="logo">⏰</div>
+    <h1>ERG Emission Clock</h1>
+    <p class="subtitle">Real-time Ergo supply &amp; emission tracker</p>
+  </header>
+
+  <main>
+    <!-- Live Stats Bar -->
+    <section class="stats-bar">
+      <div class="stat-card" id="card-height">
+        <span class="stat-label">Block Height</span>
+        <span class="stat-value" id="stat-height">—</span>
+      </div>
+      <div class="stat-card" id="card-supply">
+        <span class="stat-label">Circulating Supply</span>
+        <span class="stat-value" id="stat-supply">—</span>
+        <span class="stat-sub">ERG</span>
+      </div>
+      <div class="stat-card" id="card-max">
+        <span class="stat-label">Max Supply</span>
+        <span class="stat-value">97,739,925</span>
+        <span class="stat-sub">ERG</span>
+      </div>
+      <div class="stat-card" id="card-reward">
+        <span class="stat-label">Current Block Reward</span>
+        <span class="stat-value" id="stat-reward">—</span>
+        <span class="stat-sub">ERG / block</span>
+      </div>
+      <div class="stat-card" id="card-pct">
+        <span class="stat-label">% Minted</span>
+        <span class="stat-value" id="stat-pct">—</span>
+        <span class="stat-sub">of max</span>
+      </div>
+    </section>
+
+    <!-- Progress Bar -->
+    <section class="progress-section">
+      <div class="progress-label">
+        <span>Genesis</span>
+        <span id="progress-pct-label">0%</span>
+        <span>Max Supply</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </section>
+
+    <!-- Next Emission Change Countdown -->
+    <section class="countdown-section">
+      <h2>Next Reward Change</h2>
+      <div class="countdown-grid">
+        <div class="countdown-item">
+          <div class="countdown-value" id="cd-blocks">—</div>
+          <div class="countdown-unit">blocks</div>
+        </div>
+        <div class="countdown-sep">≈</div>
+        <div class="countdown-item">
+          <div class="countdown-value" id="cd-days">—</div>
+          <div class="countdown-unit">days</div>
+        </div>
+        <div class="countdown-sep">→</div>
+        <div class="countdown-item next-reward">
+          <div class="countdown-value" id="cd-next-reward">—</div>
+          <div class="countdown-unit">ERG / block</div>
+        </div>
+      </div>
+      <p class="countdown-note" id="countdown-note"></p>
+    </section>
+
+    <!-- Charts -->
+    <section class="charts-section">
+      <div class="chart-box">
+        <h3>Supply Curve (Emission Schedule)</h3>
+        <canvas id="supplyChart"></canvas>
+      </div>
+      <div class="chart-box">
+        <h3>Block Reward Over Time</h3>
+        <canvas id="rewardChart"></canvas>
+      </div>
+    </section>
+
+    <!-- Emission Schedule Table -->
+    <section class="table-section">
+      <h2>Emission Schedule</h2>
+      <div class="table-wrapper">
+        <table id="schedule-table">
+          <thead>
+            <tr>
+              <th>Block Range</th>
+              <th>Reward (ERG)</th>
+              <th>Blocks</th>
+              <th>ERG Issued</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="schedule-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Data from <a href="https://api.ergoplatform.com" target="_blank" rel="noopener">Ergo Explorer API</a> · Auto-refresh every 60s</p>
+    <p id="last-update">Last updated: —</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
