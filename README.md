@@ -2,7 +2,7 @@
 
 ## Live Demo
 
-**[https://ad-ergo-emission-clock-177509905794.vercel.app](https://ad-ergo-emission-clock-177509905794.vercel.app)**
+**[https://ad-ergo-emission-clock-177513325570.vercel.app](https://ad-ergo-emission-clock-177513325570.vercel.app)**
 
 
 Real-time Ergo blockchain supply and emission tracker. Visualizes the complete ERG emission schedule, current circulating supply, and countdown to the next block reward change.
